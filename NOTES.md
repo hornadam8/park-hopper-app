@@ -1,3 +1,9 @@
+TODO: fix env
+TODO: user authentication
+TODO: various controllers/views
+TODO: add image to park scraper
+        -then rollback seeds and migrations and reset
+
 -models
 
   -user -> has many trips, has many parks through trips

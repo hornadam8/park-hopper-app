@@ -1,0 +1,21 @@
+<div class="container">
+  <header></header>
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Welcome to Park Hopper!</h1>
+    <br>
+    <br>
+
+    <section class="block">
+      <section class="posts-holder">
+        <%@parks.each do |park|%>
+          <article class="post" style="height: 8750px;">
+            <br>
+            <h2><%=park.name%></h2>
+            <p><%=park.description%></p>
+            <div class="button-centering-container"> <a href="parks/<%=park.id%>" class="btn-more">View park page/add a trip!</a> </div>
+            <br>
+        <%end%>
+      </section>
+    </section>
+  </div>
+</div>
