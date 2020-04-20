@@ -1,7 +1,7 @@
-require_relative 'scraper'
+require_relative 'np_scraper'
 require 'pry'
 
-class NationalParks::Park
+class ParkScraper
   attr_accessor :name, :link, :location, :description, :information, :weather, :tours_and_camping, :wildlife, :nearby_parks
 
   @@all = []
@@ -24,7 +24,7 @@ class NationalParks::Park
   def assign_attributes
 
     #Finds info
-    page = NationalParks::Scraper.get_park_page(self.link).css(".fieldset-wrapper")
+    page = Scraper.get_park_page(self.link).css(".fieldset-wrapper")
 
     #Location(insert eye-roll emoji here)---------------------------------------
 
@@ -131,7 +131,7 @@ class NationalParks::Park
 
     #Nearby Parks--------------------------------------------------------------
 
-    nearby_parks_page = NationalParks::Scraper.get_park_page(self.link).css(".three-col")
+    nearby_parks_page = Scraper.get_park_page(self.link).css(".three-col")
 
     park_1 = nearby_parks_page.children[10].children[1].children[3].children[1].text
     park_2 = nearby_parks_page.children[13].children[1].children[3].children[1].text
@@ -147,7 +147,7 @@ class NationalParks::Park
     if self.name == "Yosemite National Park"
       self.information = "#{self.information.split("<")[0]}"
     end
-    
+
   end
 
 end

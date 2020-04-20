@@ -1,5 +1,3 @@
 class User < ActiveRecord::Base
-  #validate data
-
-
+  has_secure_password
 end

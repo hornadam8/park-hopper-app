@@ -1,7 +1,14 @@
-require_relative 'models/park'
+require_relative 'park_w_scraper'
 require 'pry'
 
-class NationalParks::Scraper
+class Scraper
+
+  def self.run
+    self.make_parks
+    ParkScraper.all.each do |park|
+      Park.create(park.instance_values)
+    end
+  end
 
   def self.get_page
     Nokogiri::HTML(URI.open("https://www.nationalparks.org/explore-parks/all-parks"))
@@ -19,7 +26,7 @@ class NationalParks::Scraper
         if sub_name != "Search for a Park"
           name = sub_name.chomp(" ")
           link = sub_link += s.attributes.fetch("value"){|key| block}.to_s[34...]
-          NationalParks::Park.new(name,link)
+          ParkScraper.new(name,link)
         end
       end
     end
@@ -28,4 +35,6 @@ class NationalParks::Scraper
   def self.get_park_page(link)
     Nokogiri::HTML(URI.open(link))
   end
+
+
 end
