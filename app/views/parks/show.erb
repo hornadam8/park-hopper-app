@@ -4,6 +4,8 @@
     <h1><%=@park.name%></h1>
 
     <div class="content">
+      <h3>Location:</h3>
+      <p><%=@park.location%></p>
       <h3>Description:</h3>
       <p><%=@park.description%></p><br>
       <h3>Information:</h3>
@@ -26,8 +28,6 @@
           <p><%=park.gsub("[","").gsub("]","").delete_prefix('"').delete_suffix('"')%></p><br>
         <%end%>
       <%end%>
-      <h3>Location:</h3>
-      <p><%=@park.location%></p>
     </div>
 
     <div class="sidebar">
@@ -35,13 +35,12 @@
       <form method="/trips/new" action="POST"
         <input type="hidden" id="hidden" value='<%=@park.id%>' name="park_id">
         ##need to add user_id
-        <p>Trip Date:</p>
+        <p>Trip Date:<br>
         <input type="date" id="visit_date" name="visit_date"
                 value="2020-04-18"
-                min="1920-01-01" max="2020-12-31">
-        <p>Write a review:</p>
-        <textarea name="trip_review"></textarea>
-        <br>
+                min="1920-01-01" max="2020-12-31"></p>
+        <p>Write a review:<br>
+        <textarea name="trip_review" style="margin: 0px; height: 253px; width: 271px;"></textarea></p>
         <button type="submit" value="submit">Submit</button>
       </form>
     </div>
