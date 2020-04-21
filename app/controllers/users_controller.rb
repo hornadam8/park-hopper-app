@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
 
-  post "/users/signup" do
+  get "/signup" do
+    erb :"users/signup"
+  end
+
+  post "/signup" do
     @user = User.create(params[:user])
-    redirect "users/#{@user.id}"
+    redirect "/users/#{@user.id}"
   end
 
   get "/users/:id" do

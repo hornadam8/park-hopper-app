@@ -1,3 +1,5 @@
+TODO: change park sidebar to user info
+TODO: trips sidebar params for park/id 
 TODO: various controllers/views
 TODO: rubric review
 
@@ -23,6 +25,6 @@ Extra TODO: add image to park scraper
 
     -login -> email/password form
 
-    -sign_up -> name/email/password form
+    -signup -> name/email/password form
 
     -show -> displays user info and trips with links to park pages, link to edit trip, link to edit user

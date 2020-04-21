@@ -1,7 +1,7 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  
+
   register Sinatra::ActiveRecordExtension
 
   configure do
@@ -13,12 +13,22 @@ class ApplicationController < Sinatra::Base
 
 
   get '/' do
-    redirect "/parks"
+    if logged_in?
+      redirect "/parks"
+    else
+      erb :"users/login_signup"
+    end
   end
 
 
 
 
 
+  helpers do
 
+    def logged_in?
+      !!session[:email]
+    end
+
+  end
 end
