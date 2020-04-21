@@ -1,7 +1,7 @@
-TODO: fix env
-TODO: user authentication
 TODO: various controllers/views
+TODO: rubric review
 
+Extra TODO: css styling
 Extra TODO: Park.chunk(3) to create nicer index layout
 Extra TODO: add image to park scraper
         -then rollback seeds and migrations and reset
