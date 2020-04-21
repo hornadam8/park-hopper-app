@@ -1,14 +1,39 @@
 <div class="container">
-  <header></header>
+  <header><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Mountain_Range_Banner.jpg"
+    alt=""
+    title=""
+    width="960"
+    height="150"
+    class="img-responsive main-image">
+  </header>
   <div class="col-md-8 col-md-offset-2">
     <h1>Welcome to Park Hopper!</h1>
     <br>
+    <div class="sidebar">
+      <h3>Login!</h3>
+      <form action="/sessions/login" method="post">
+        <p>Email:<br>
+        <input type="text" id="user[email]" name="user[email]"</p>
+        <p>Password:<br>
+        <input type="password" id="user[password]" name="user[password]"</p>
+        <button type="submit" value="submit">Submit</button>
+      </form><br>
+      <h3>...or Sign-up!</h3>
+      <form method="post" action="/users/signup">
+        <p>Name:<br>
+          <input type="text" name="user[name]"</p>
+        <p>Email:<br>
+          <input type="text" name="user[email]"</p>
+        <p>Password:<br>
+          <input type="password" name="user[password]"</p>
+        <button type="submit" value="submit">Submit</button>
+      </form>
+    </div>
     <br>
-
     <section class="block">
       <section class="posts-holder">
         <%@parks.each do |park|%>
-          <article class="post" style="height: 8750px;">
+          <article class="post" style="height: 9850px;">
             <br>
             <h2><%=park.name%></h2>
             <p><%=park.description%></p>

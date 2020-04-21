@@ -1,18 +1,19 @@
 require './config/environment'
 
-
 class ApplicationController < Sinatra::Base
+  
+  register Sinatra::ActiveRecordExtension
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, ENV["SESSION_SECRET"]
+    set :session_secret, "AQOoE4ryloqtgkle5F35o3GOOA3A3qSoSeWaltOAogotRa;LyelGteoAlog24at4"
   end
 
 
   get '/' do
-    erb :welcome
+    redirect "/parks"
   end
 
 
