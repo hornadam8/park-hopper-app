@@ -1,6 +1,4 @@
-TODO: change park sidebar to user info
-TODO: trips sidebar params for park/id
-TODO: various controllers/views
+TODO: various users/trips edit/delete
 TODO: rubric review
 
 Extra TODO: css styling
