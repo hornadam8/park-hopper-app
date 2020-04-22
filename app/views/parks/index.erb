@@ -10,24 +10,18 @@
     <h1>Welcome to Park Hopper!</h1>
     <br>
     <div class="sidebar">
-      <h3>Login!</h3>
-      <form action="/login" method="post">
-        <p>Email:<br>
-        <input type="text" id="user[email]" name="user[email]"</p>
-        <p>Password:<br>
-        <input type="password" id="user[password]" name="user[password]"</p>
-        <button type="submit" value="submit">Submit</button>
-      </form><br>
-      <h3>...or Sign-up!</h3>
-      <form method="post" action="/users/signup">
-        <p>Name:<br>
-          <input type="text" name="user[name]"</p>
-        <p>Email:<br>
-          <input type="text" name="user[email]"</p>
-        <p>Password:<br>
-          <input type="password" name="user[password]"</p>
-        <button type="submit" value="submit">Submit</button>
-      </form>
+      <h3>Welcome back <%=@user.name.split(" ").first%>!</h3>
+      <div class="button-centering-container"> <a href="users/<%=@user.id%>" class="btn-more">View profile</a> </div>
+      <div class="button-centering-container"> <a href="logout" class="btn-more">Logout</a> </div>
+      <br>
+      <h4>your recent trips:</h4>
+      <br>
+      <%@user.trips.reverse.each do |trip|%>
+      <p><strong><%=trip.park.name%></strong></p>
+      <p>Visited: <%=trip.visit_date%></p>
+      <p>Review: <%=trip.review%></p>
+      <div class="button-centering-container"> <a href='/trips/<%=trip.id%>' class="btn-more">View this trip</a></div><br><br>
+      <%end%>
     </div>
     <br>
     <section class="block">

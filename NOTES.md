@@ -1,5 +1,5 @@
 TODO: change park sidebar to user info
-TODO: trips sidebar params for park/id 
+TODO: trips sidebar params for park/id
 TODO: various controllers/views
 TODO: rubric review
 
@@ -17,14 +17,17 @@ Extra TODO: add image to park scraper
 
 -controllers/views
 
-  -index -> Shows all parks with add a trip button
-    -if logged in? - header shows tabs and profile info
-    -not logged in - header shows tabs and login/sign-up links
+  -index(user login/signup)
 
-  -/user/
+  -parks
+    /parks -> Shows all parks with User info and trips in sidebar
 
-    -login -> email/password form
+    /parks/:id -> shows park page with add trip button
 
-    -signup -> name/email/password form
+  -users
 
     -show -> displays user info and trips with links to park pages, link to edit trip, link to edit user
+
+    -edit -> displays user info and allows for edits
+
+    -delete -> button in edit page destroys user from db

@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       redirect "/parks"
     else
-      erb :"users/login_signup"
+      erb :"users/login"
     end
   end
 
@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def logged_in?
-      !!session[:email]
+      !!session[:id]
     end
 
   end

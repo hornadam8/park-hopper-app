@@ -8,4 +8,6 @@ class Park < ActiveRecord::Base
   validates :tours_and_camping, presence: true
   validates :wildlife, presence: true
   validates :nearby_parks, presence: true
+  has_many :trips
+  has_many :users, through: :trips
 end

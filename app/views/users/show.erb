@@ -6,12 +6,17 @@
                 height="500"
                 class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
-    <h1><%=@user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h1>
+    <h1><%=@user.name%></h1>
     <br>
     <div class="content">
-    <h3>Visited: <%=@trip.visit_date%></h3>
-    <p>Review:<br>
-      <%=@trip.review%></p>
+    <h3>Recent trips:</h3>
+    <br>
+    <%@user.trips.reverse.each do |trip|%>
+    <p><strong><%=trip.park.name%></strong></p>
+    <p>Visited: <%=trip.visit_date%></p>
+    <p>Review: <%=trip.review%></p>
+    <div class="button-centering-container"> <a href='/trips/<%=trip.id%>' class="btn-more">View this trip</a></div><br><br>
+    <%end%>
   </div>
 </div>
 </div>
