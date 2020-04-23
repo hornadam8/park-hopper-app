@@ -26,4 +26,13 @@ class TripsController < ApplicationController
     @trip.update(new_info)
     redirect "/trips/#{@trip.id}"
   end
+
+  delete "/trips/:id" do
+    @trip = Trip.find(params[:id])
+    if current_user.id == session[:user_id]
+      @trip.destroy
+    else
+      redirect "/logout"
+    end
+  end
 end

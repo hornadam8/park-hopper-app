@@ -28,8 +28,17 @@ class UsersController < ApplicationController
 
   patch "/users/:id" do
     @user = User.find(session[:user_id])
-    new_info = params.reject!{|k| k == "_method"}
-    @user.update(new_info)
+    @user.update(params[:user])
     redirect "/users/#{@user.id}"
   end
+
+  delete "/users/:id" do
+    @user = User.find(params[:id])
+    if current_user.id == @user.id
+      @user.destroy
+    else
+      redirect "/logout"
+    end
+  end
+
 end

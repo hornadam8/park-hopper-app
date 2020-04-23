@@ -7,7 +7,7 @@
                 class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
     <h1><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h1>
-    <%if @trip.user_id == @user.id%>
+    <%if @trip.user_id == session[:user_id]%>
       <div class="button-centering-container"> <a href="/trips/<%=@trip.id%>/edit" class="btn-more">Edit this trip</a></div>
     <%end%>
     <br>

@@ -1,0 +1,31 @@
+<div class="container">
+  <header><img src="https://www.nationalparks.org/sites/default/files/styles/large_list_image_2x/public/Acadia_iStock_000002062946.jpg?itok=t9JPKAN9&amp;timestamp=1471548671"
+                alt=""
+                title=""
+                width="960"
+                height="500"
+                class="img-responsive main-image"></header>
+  <div class="col-md-8 col-md-offset-2">
+    <h1><%=@user.name%></h1>
+    <form action="/users/<%=@user.id%>" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="PATCH">
+      <input type="text" name="user[name]"value="<%=@user.name%>">
+      <input type="submit" value="Apply Changes">
+    </form>
+    <form action="/users/<%=@user.id%>" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete profile">
+    </form>
+    <br>
+    <div class="content">
+    <h3>Recent trips:</h3>
+    <br>
+    <%@user.trips.reverse.each do |trip|%>
+    <p><strong><%=trip.park.name%></strong></p>
+    <p>Visited: <%=trip.visit_date%></p>
+    <p>Review: <%=trip.review%></p>
+    <div class="button-centering-container"> <a href='/trips/<%=trip.id%>' class="btn-more">View this trip</a></div><br><br>
+    <%end%>
+  </div>
+</div>
+</div>
