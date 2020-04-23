@@ -8,7 +8,7 @@
   <div class="col-md-8 col-md-offset-2">
     <h1><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h1>
     <%if @trip.user_id == @user.id%>
-      <div class="button-centering-container"> <a href="/trips/<%=@trip.id%>/edit" class="btn-more">Edit this page</a> </div>
+      <div class="button-centering-container"> <a href="/trips/<%=@trip.id%>/edit" class="btn-more">Edit this trip</a></div>
     <%end%>
     <br>
     <div class="content">

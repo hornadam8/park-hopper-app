@@ -14,8 +14,22 @@ class UsersController < ApplicationController
     end
   end
 
+  get "/users/:id/edit" do
+    @user = User.find(session[:user_id])
+    erb :"users/edit"
+  end
+
   get "/users/:id" do
     @user = User.find(params[:id])
     erb :"users/show"
+  end
+
+
+
+  patch "/users/:id" do
+    @user = User.find(session[:user_id])
+    new_info = params.reject!{|k| k == "_method"}
+    @user.update(new_info)
+    redirect "/users/#{@user.id}"
   end
 end
