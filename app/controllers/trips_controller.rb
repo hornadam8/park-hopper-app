@@ -2,21 +2,28 @@ class TripsController < ApplicationController
 
   post "/trips/new" do
     @trip = Trip.create(params)
-    redirect "/users/#{params[:user_id]}"
+    redirect "/users/#{@trip.user_id}"
   end
 
 
   get "/trips/:id" do
     @trip = Trip.find(params[:id])
-    @user = User.find(session[:id])
+    @user = User.find(session[:user_id])
     erb :"trips/show"
   end
 
 
 
-  get "trip/:id/edit" do
+  get "/trips/:id/edit" do
     @trip = Trip.find(params[:id])
-    @user = User.find(session[:id])
+    @user = User.find(session[:user_id])
     erb :"trips/edit"
+  end
+
+  patch "/trips/:id" do
+    @trip = Trip.find(params[:id])
+    new_info = params.reject!{|k| k == "_method"}
+    @trip.update(new_info)
+    redirect "/trips/#{@trip.id}"
   end
 end

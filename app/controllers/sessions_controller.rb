@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
   post "/login" do
     @user = User.find_by(email: params[:user][:email])
     if @user.authenticate(params[:user][:password])
-      session[:id] = @user.id
-      redirect "/"
+      session[:user_id] = @user.id
+      redirect "/parks"
     else
       redirect "/login"
     end

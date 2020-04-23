@@ -1,12 +1,17 @@
 class UsersController < ApplicationController
 
-  get "/signup" do
+  get "/users/signup" do
     erb :"users/signup"
   end
 
   post "/users/signup" do
-    @user = User.create(params[:user])
-    redirect "/login"
+    @user = User.new(params[:user])
+    if @user.save && params[:user][:password].length >= 6
+      session[:user_id] = @user.id
+      redirect "/parks"
+    else
+      redirect "/users/signup"
+    end
   end
 
   get "/users/:id" do

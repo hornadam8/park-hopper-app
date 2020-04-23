@@ -1,4 +1,4 @@
-TODO: various users/trips edit/delete
+TODO: users/trips edit/delete
 TODO: rubric review
 
 Extra TODO: css styling
