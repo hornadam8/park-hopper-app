@@ -1,32 +1,54 @@
 <div class="container">
-  <header><img src="https://www.nationalparks.org/sites/default/files/styles/large_list_image_2x/public/Acadia_iStock_000002062946.jpg?itok=t9JPKAN9&amp;timestamp=1471548671"
+  <header><img src=<%=@park.image%>
                 alt=""
                 title=""
                 width="960"
-                height="500"
+                height="650"
                 class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
+    <style>
+      .parallax {
+        /* The image used */
+        background-image: url("<%=@park.image%>");
+
+        /* Set a specific height */
+        height: 200px;
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+  </style>
+
     <h1><%=@park.name%></h1>
+    <div class="parallax"></div>
 
     <div class="content">
       <h3>Location:</h3>
       <p><%=@park.location%></p>
       <h3>Description:</h3>
       <p><%=@park.description%></p><br>
+    <div class="parallax"></div>
       <h3>Information:</h3>
       <p><%=@park.information%></p><br>
+    <div class="parallax"></div>
       <%if @park.weather != "There is no information available on the weather for this park."%>
         <h3>Weather:</h3>
         <p><%=@park.weather%></p><br>
       <%end%>
+    <div class="parallax"></div>
       <%if @park.tours_and_camping != "There is no information available on the tours and camping in this park."%>
         <h3>Tours and Camping:</h3>
         <p><%=@park.tours_and_camping%></p><br>
       <%end%>
+    <div class="parallax"></div>
       <%if @park.wildlife != "There is no information available on wildlife in this park."%>
         <h3>Wildlife:</h3>
         <p><%=@park.wildlife%></p><br>
       <%end%>
+    <div class="parallax"></div>
       <%if !@park.nearby_parks.empty?%>
         <h4>Some nearby parks and trails to check out:</h4><br>
         <%@park.nearby_parks.split(", ").each do |park|%>
@@ -43,11 +65,21 @@
         <p>Trip Date:<br>
         <input type="date" id="visit_date" name="visit_date"
                 value="2020-04-18"
-                min="1920-01-01" max="2020-12-31"></p>
+                min="1920-01-01" max="2020-12-31" required></p>
         <p>Write a review:<br>
-        <textarea name="review" style="margin: 0px; height: 253px; width: 271px;"></textarea></p>
+        <textarea name="review" style="margin: 0px; height: 253px; width: 271px;" required></textarea></p>
         <button type="submit" value="submit">Submit</button>
       </form>
+    </div>
+
+    <div class="sidebar">
+      <h3>Recent visitor reviews:</h3>
+      <%@park.trips.reverse.each do |trip|%>
+      <p><strong><%=trip.user.name%></strong></p>
+      <p>Visited: <%=trip.visit_date%></p>
+      <p>Review: <%=trip.review%></p>
+      <div class="button-centering-container"> <a href='/trips/<%=trip.id%>' class="btn-more">View this trip</a></div><br><br>
+      <%end%>
     </div>
 
 

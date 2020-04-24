@@ -2,7 +2,7 @@ require_relative 'np_scraper'
 require 'pry'
 
 class ParkScraper
-  attr_accessor :name, :link, :location, :description, :information, :weather, :tours_and_camping, :wildlife, :nearby_parks
+  attr_accessor :name, :link, :location, :description, :information, :weather, :tours_and_camping, :wildlife, :nearby_parks, :image
 
   @@all = []
 
@@ -25,6 +25,12 @@ class ParkScraper
 
     #Finds info
     page = Scraper.get_park_page(self.link).css(".fieldset-wrapper")
+
+    if page.children[5].children[1]
+     self.image =  page.children[5].children[1].children[1].children[3].children[1].attributes["src"].to_s
+    else
+     self.image = Scraper.get_park_page(self.link).css(".page").children[3].children[1].children[1].children[3].children[1].children[1].children[1].children[1].children[3].children[1].children[1].children[1].children[1].children[1].children[1].children[0].children[0].children[0].children[0].children[1].attributes["src"].to_s
+    end
 
     #Location(insert eye-roll emoji here)---------------------------------------
 

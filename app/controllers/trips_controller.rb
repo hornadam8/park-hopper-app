@@ -2,7 +2,7 @@ class TripsController < ApplicationController
 
   post "/trips/new" do
     @trip = Trip.create(params)
-    redirect "/users/#{@trip.user_id}"
+    redirect "/parks/#{@trip.park_id}"
   end
 
 
@@ -31,6 +31,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     if current_user.id == session[:user_id]
       @trip.destroy
+      redirect "/users/#{current_user.id}"
     else
       redirect "/logout"
     end

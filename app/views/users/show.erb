@@ -7,8 +7,10 @@
                 class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
     <h1><%=@user.name%></h1>
+    <div class="button-centering-container"> <a href="/parks" class="btn-more">Home</a></div>
     <%if session[:user_id] == @user.id%>
       <div class="button-centering-container"> <a href="/users/<%=@user.id%>/edit" class="btn-more">Edit profile</a></div>
+      <div class="button-centering-container"> <a href="logout" class="btn-more">Logout</a> </div>
     <%end%>
     <br>
     <div class="content">

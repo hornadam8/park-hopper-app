@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.id == @user.id
       @user.destroy
+      redirect "/login"
     else
       redirect "/logout"
     end

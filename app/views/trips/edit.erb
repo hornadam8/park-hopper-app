@@ -28,6 +28,7 @@
       </form>
     </div>
     <h1><%=@user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h1>
+    <div class="button-centering-container"> <a href="/users/<%=@trip.user_id%>" class="btn-more">Back to profile</a></div>
     <br>
     <div class="content">
     <h3>Visited: <%=@trip.visit_date%></h3>

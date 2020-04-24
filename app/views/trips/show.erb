@@ -9,6 +9,7 @@
     <h1><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h1>
     <%if @trip.user_id == session[:user_id]%>
       <div class="button-centering-container"> <a href="/trips/<%=@trip.id%>/edit" class="btn-more">Edit this trip</a></div>
+      <div class="button-centering-container"> <a href="/users/<%=@trip.user_id%>" class="btn-more">Back to profile</a></div>
     <%end%>
     <br>
     <div class="content">
