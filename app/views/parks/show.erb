@@ -7,12 +7,13 @@
                 class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
     <style>
+      
       .parallax {
         /* The image used */
         background-image: url("<%=@park.image%>");
 
         /* Set a specific height */
-        height: 200px;
+        height: 600px;
 
         /* Create the parallax scrolling effect */
         background-attachment: fixed;
@@ -58,6 +59,8 @@
     </div>
 
     <div class="sidebar">
+      <div class="button-centering-container"> <a href="/parks" class="btn-more">Home</a></div>
+      <div class="button-centering-container"> <a href="/users/<%=@user.id%>" class="btn-more">Profile</a></div>
       <h3>Add a trip!</h3>
       <form action="/trips/new" method="POST">
         <input type="hidden" id="park_id" name="park_id" value="<%=@park.id%>">

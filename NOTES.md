@@ -1,10 +1,7 @@
-TODO: users/trips edit/delete
-TODO: rubric review
+
 
 Extra TODO: css styling
-Extra TODO: Park.chunk(3) to create nicer index layout
-Extra TODO: add image to park scraper
-        -then rollback seeds and migrations and reset
+Extra TODO: Park.all.chunk(3) to create nicer index layout
 
 -models
 

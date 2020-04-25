@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     @user = User.find(params[:id])
+    @park = Park.all[rand(61)]
     erb :"users/show"
   end
 

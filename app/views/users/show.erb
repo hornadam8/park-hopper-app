@@ -1,5 +1,5 @@
 <div class="container">
-  <header><img src="https://www.nationalparks.org/sites/default/files/styles/large_list_image_2x/public/Acadia_iStock_000002062946.jpg?itok=t9JPKAN9&amp;timestamp=1471548671"
+  <header><img src="<%=@park.image%>"
                 alt=""
                 title=""
                 width="960"
@@ -18,6 +18,9 @@
     <br>
     <%@user.trips.reverse.each do |trip|%>
     <p><strong><%=trip.park.name%></strong></p>
+    <img src="<%=trip.park.image%>"
+        width="307"
+        height="217">
     <p>Visited: <%=trip.visit_date%></p>
     <p>Review: <%=trip.review%></p>
     <div class="button-centering-container"> <a href='/trips/<%=trip.id%>' class="btn-more">View this trip</a></div><br><br>
