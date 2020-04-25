@@ -7,7 +7,7 @@
                 class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
     <style>
-      
+
       .parallax {
         /* The image used */
         background-image: url("<%=@park.image%>");
@@ -20,6 +20,16 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+      }
+      a.btn {
+        display: inline-block;
+        padding: 10px;
+        background-color: #474548;
+        font-family: Verdana,sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+        text-decoration: none;
+        color: white;
       }
   </style>
 
@@ -59,8 +69,11 @@
     </div>
 
     <div class="sidebar">
-      <div class="button-centering-container"> <a href="/parks" class="btn-more">Home</a></div>
-      <div class="button-centering-container"> <a href="/users/<%=@user.id%>" class="btn-more">Profile</a></div>
+      <a class="btn" href="/parks" style="float:left">Home</a>
+      <a class="btn" href="/users/<%=@user.id%>" style="float:right">Profile</a>
+      <br>
+      <br>
+      <br>
       <h3>Add a trip!</h3>
       <form action="/trips/new" method="POST">
         <input type="hidden" id="park_id" name="park_id" value="<%=@park.id%>">
@@ -71,7 +84,7 @@
                 min="1920-01-01" max="2020-12-31" required></p>
         <p>Write a review:<br>
         <textarea name="review" style="margin: 0px; height: 253px; width: 271px;" required></textarea></p>
-        <button type="submit" value="submit">Submit</button>
+        <a class="btn" type="submit" value="submit">Submit</a>
       </form>
     </div>
 

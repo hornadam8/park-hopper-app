@@ -1,91 +1,49 @@
 <div class="container">
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Mountain_Range_Banner.jpg"
+    <img src="images/ParkHopper.jpg"
       alt=""
       title=""
       width="960"
       height="150"
       class="img-responsive main-image">
-    <style>
-      ul.gray {
-        border: 1px solid #e7e7e7;
-        background-color: rgba(255, 255, 255, 0.8);
-      }
-      ul.horizontal {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: rgba(255, 255, 255, 0.8);
-      }
-      *, *:before, *:after {
-        box-sizing: inherit;
-      }
-      user agent stylesheet
-      ul {
-        display: block;
-        list-style-type: disc;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 40px;
-      }
-      .w3-white, .w3-hover-white:hover {
-        color: #000!important;
-        background-color: #fff!important;
-      }
-    .w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
-      color: #000!important;
-      background-color: #f1f1f1!important;
-      }
-      html, body {
-        font-family: Verdana,sans-serif;
-        font-size: 15px;
-        line-height: 1.5;
-    }
-    html {
-      -ms-text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-    }
-    user agent stylesheet
-    html {
-    color: -internal-root-color;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-    </style>
-    <ul class="horizontal gray">
-      <li><a href="/users/<%=@user.id%>" class="btn-more">View profile</a></li>
-      <li><a href="/logout" class="rightli" style="float:right">Logout</a></li>
-    </ul>
   </header>
+  <style>
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-gap: 10px;
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .grid-container > div {
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 10px 0;
+      font-size: 15px;
+    }
+    a.btn {
+      display: inline-block;
+      padding: 10px;
+      background-color: #474548;
+      font-family: Verdana,sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      text-decoration: none;
+      color: white;
+    }
+    .col-md-8 {
+      text-align: center;
+    }
+  </style>
   <div class="col-md-8 col-md-offset-2">
+    <ul class="horizontal gray">
+      <a class="btn" href="/users/<%=@user.id%>" style="float:left">View profile</a>
+      <a class="btn" href="/logout" style="float:right">Logout</a>
+    </ul>
     <h1>Welcome back <%=@user.name.split(" ").first%>!</h1>
     <br>
-
-    <style>
-
-      .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-gap: 10px;
-        background-color: #333;
-        padding: 10px;
-      }
-
-      .grid-container > div {
-        background-color: rgba(255, 255, 255, 0.8);
-        text-align: center;
-        padding: 20px 0;
-        font-size: 15px;
-      }
-    </style>
 
     <div class="grid-container">
 
@@ -96,7 +54,7 @@
           height="217">
           <h2><%=park[0].name%></h2>
           <p><%=park[0].description%></p>
-          <div class="button-centering-container"> <a href="parks/<%=park[0].id%>" class="btn-more">View park page/add a trip!</a> </div></div>
+          <a class="btn" href="parks/<%=park[0].id%>" class="btn">View park page/add a trip!</a> </div>
           <%@i += 1%>
         <div class="item<%=@i%>">
           <img src="<%=park[1].image%>"
@@ -104,20 +62,20 @@
           height="217">
           <h2><%=park[1].name%></h2>
           <p><%=park[1].description%></p>
-          <div class="button-centering-container"> <a href="parks/<%=park[1].id%>" class="btn-more">View park page/add a trip!</a> </div></div>
+          <a class="btn" href="parks/<%=park[1].id%>">View park page/add a trip!</a> </div>
           <%@i += 1%>
         <div class="item<%=@i%>">
-      <%if park[2]%>
+        <%if park[2]%>
           <img src="<%=park[2].image%>"
           width="307"
           height="217">
           <h2><%=park[2].name%></h2>
           <p><%=park[2].description%></p>
-          <div class="button-centering-container"> <a href="parks/<%=park[2].id%>" class="btn-more">View park page/add a trip!</a> </div></div>
+          <a class="btn" href="parks/<%=park[2].id%>">View park page/add a trip!</a> </div>
         <%@i += 1%>
             <br>
-      <%end%>
         <%end%>
+      <%end%>
       </div>
       </section>
     </section>
