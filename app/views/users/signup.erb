@@ -1,51 +1,50 @@
+<style>
+  .parallax {
+
+    background-image: url("https://imagesofrmnp.com/images/xl/The-Oasis.jpg");
+
+
+    height: 500px;
+
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 70px solid black;
+  }
+</style>
 <div class="container">
-  <header><img src="images/ParkHopper.jpg"
-    alt=""
-    title=""
-    width="960"
-    height="150"
-    class="img-responsive main-image">
-    <center><h1>Welcome to Park Hopper!</h1></center>
+  <header>
+    <img src="http://localhost:9393/images/ParkHopper.jpg"
+      alt=""
+      title=""
+      width="1430"
+      height="225"
+      class="img-responsive main-image">
   </header>
 
-  <style>
-    .parallax {
-      /* The image used */
-      background-image: url("https://imagesofrmnp.com/images/xl/The-Oasis.jpg");
-
-      /* Set a specific height */
-      height: 500px;
-
-      /* Create the parallax scrolling effect */
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-</style>
 
 
-<!-- Container element -->
-<div class="parallax"></div>
+
 <div class="sidebar">
-  <h3>Sign-up!</h3>
-  <form method="post" action="/users/signup">
+  <h2>Sign Up</h2>
+  <form action="/signup" method="post">
     <p>Name:<br>
-      <input type="text" name="user[name]" required</p>
+    <input type="text" name="user[name]" required</p>
     <p>Email:<br>
-      <input type="text" name="user[email]" required</p>
+    <input type="text" id="user[email]" name="user[email]" required</p>
     <p>Password:<br>
-      <input type="password" name="user[password]" required</p>
-    <button type="submit" value="submit">Submit</button>
+    <input type="password" id="user[password]" name="user[password]" required</p>
+    <br>
+    <br>
+    <button><a class="btn" type="submit" value="submit">Sign Up</a></button>
   </form>
 </div>
-<div class="col-md-8 col-md-offset-2">
-  <center><h2>and start logging your trips!</h2></center>
-  <br>
-
-
 <div class="parallax"></div>
 
 
-</div
+  <center><h2>National Parks e-passport</h2></center>
+  <br>
+  <br>
 </div>

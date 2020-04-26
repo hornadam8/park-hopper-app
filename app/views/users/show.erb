@@ -2,29 +2,64 @@
   <header><img src="<%=@park.image%>"
                 alt=""
                 title=""
-                width="960"
-                height="500"
-                class="img-responsive main-image"></header>
-  <div class="col-md-8 col-md-offset-2">
-    <h1><%=@user.name%></h1>
-    <div class="button-centering-container"> <a href="/parks" class="btn-more">Home</a></div>
-    <%if session[:user_id] == @user.id%>
-      <div class="button-centering-container"> <a href="/users/<%=@user.id%>/edit" class="btn-more">Edit profile</a></div>
-      <div class="button-centering-container"> <a href="logout" class="btn-more">Logout</a> </div>
-    <%end%>
+                width="1430"
+                height="750"
+                class="img-responsive main-image">
+  </header>
+
+    <center><h1><%=@user.name%></h1></center>
+    <ul class="horizontal gray">
+      <%if session[:user_id] == @user.id%>
+        <a class="btn" href="/logout" style="float:right">Logout</a>
+        <a class="btn" href="/users/<%=@user.id%>/edit" style="float:right">Edit profile</a>
+      <%end%>
+      <a class="btn" href="/parks" style="float:right">Home</a>
+    </ul>
     <br>
-    <div class="content">
-    <h3>Recent trips:</h3>
-    <br>
-    <%@user.trips.reverse.each do |trip|%>
-    <p><strong><%=trip.park.name%></strong></p>
-    <img src="<%=trip.park.image%>"
-        width="307"
-        height="217">
-    <p>Visited: <%=trip.visit_date%></p>
-    <p>Review: <%=trip.review%></p>
-    <div class="button-centering-container"> <a href='/trips/<%=trip.id%>' class="btn-more">View this trip</a></div><br><br>
-    <%end%>
+  <div align="left"><h2><%=@user.name.split(" ").first%>'s Recent Trips</h2></div>
+  <div class="grid-container">
+
+    <%@chunks.each do |trip|%>
+      <%if trip[0]%>
+        <div class="item<%=@i%>">
+          <img src="<%=trip[0].park.image%>"
+                width="307"
+                height="217">
+          <h2><%=trip[0].park.name%></h2>
+          <p><%=trip[0].park.description%></p>
+          <a class="btn" href="/trips/<%=trip[0].id%>">View this trip!</a> </div>
+          <%@i += 1%>
+        <%end%>
+      <%if trip[1]%>
+        <div class="item<%=@i%>">
+          <img src="<%=trip[1].park.image%>"
+                width="307"
+                height="217">
+          <h2><%=trip[1].park.name%></h2>
+          <p><%=trip[1].park.description%></p>
+          <a class="btn" href="/trips/<%=trip[1].id%>">View this trip!</a> </div>
+          <%@i += 1%>
+        <%end%>
+      <%if trip[2]%>
+        <div class="item<%=@i%>">
+          <img src="<%=trip[2].park.image%>"
+                width="307"
+                height="217">
+          <h2><%=trip[2].park.name%></h2>
+          <p><%=trip[2].park.description%></p>
+          <a class="btn" href="/trips/<%=trip[2].id%>">View this trip!</a> </div>
+          <%@i += 1%>
+        <%end%>
+        <%if trip[3]%>
+          <div class="item<%=@i%>">
+            <img src="<%=trip[3].park.image%>"
+                  width="307"
+                  height="217">
+            <h2><%=trip[3].park.name%></h2>
+            <p><%=trip[3].park.description%></p>
+            <a class="btn" href="/trips/<%=trip[3].id%>">View this trip!</a> </div>
+            <%@i += 1%>
+        <%end%>
+      <%end%>
+    </div>
   </div>
-</div>
-</div>

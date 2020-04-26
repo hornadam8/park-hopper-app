@@ -1,48 +1,24 @@
+<style>
+
+
+</style>
+
 <div class="container">
   <header>
     <img src="images/ParkHopper.jpg"
       alt=""
       title=""
-      width="960"
-      height="150"
+      width="1430"
+      height="225"
       class="img-responsive main-image">
   </header>
-  <style>
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: auto auto auto auto;
-      grid-gap: 10px;
-      background-color: #333;
-      padding: 10px;
-    }
-
-    .grid-container > div {
-      background-color: rgba(255, 255, 255, 0.8);
-      text-align: center;
-      padding: 10px 0;
-      font-size: 15px;
-    }
-    a.btn {
-      display: inline-block;
-      padding: 10px;
-      background-color: #474548;
-      font-family: Verdana,sans-serif;
-      font-size: 15px;
-      line-height: 1.5;
-      text-decoration: none;
-      color: white;
-    }
-    .col-md-8 {
-      text-align: center;
-    }
-  </style>
-  <div class="col-md-8 col-md-offset-2">
+  <center><h1>Welcome back <%=@user.name.split(" ").first%>!</h1></center>
     <ul class="horizontal gray">
       <a class="btn" href="/users/<%=@user.id%>" style="float:left">View profile</a>
       <a class="btn" href="/logout" style="float:right">Logout</a>
     </ul>
-    <h1>Welcome back <%=@user.name.split(" ").first%>!</h1>
+    <br>
+    <br>
     <br>
 
     <div class="grid-container">
@@ -72,12 +48,19 @@
           <h2><%=park[2].name%></h2>
           <p><%=park[2].description%></p>
           <a class="btn" href="parks/<%=park[2].id%>">View park page/add a trip!</a> </div>
+          <%@i += 1%>
+        <%end%>
+        <div class="item<%=@i%>">
+        <%if park[3]%>
+          <img src="<%=park[3].image%>"
+          width="307"
+          height="217">
+          <h2><%=park[3].name%></h2>
+          <p><%=park[3].description%></p>
+          <a class="btn" href="parks/<%=park[3].id%>">View park page/add a trip!</a> </div>
         <%@i += 1%>
-            <br>
         <%end%>
       <%end%>
       </div>
-      </section>
-    </section>
   </div>
 </div>

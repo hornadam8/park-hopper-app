@@ -1,32 +1,74 @@
 <div class="container">
-  <header><img src="https://www.nationalparks.org/sites/default/files/styles/large_list_image_2x/public/Acadia_iStock_000002062946.jpg?itok=t9JPKAN9&amp;timestamp=1471548671"
+  <header><img src="<%=@park.image%>"
                 alt=""
                 title=""
-                width="960"
-                height="500"
-                class="img-responsive main-image"></header>
-  <div class="col-md-8 col-md-offset-2">
-    <h1><%=@user.name%></h1>
+                width="1430"
+                height="750"
+                class="img-responsive main-image">
+  </header>
+
+    <center><h1><%=@user.name%></h1></center>
     <form action="/users/<%=@user.id%>" method="POST">
       <input type="hidden" id="hidden" name="_method" value="PATCH">
-      <input type="text" name="user[name]"value="<%=@user.name%>">
-      <input type="submit" value="Apply Changes">
+      <center><textarea type="text" style="margin: 0px; height: 25 px; width: 50 px; font-size: 20px; text-align: center;" name="user[name]"><%=@user.name%></textarea></center><br><br>
+      <center><button><a class="btn" type="submit" value="submit">Apply Changes</a></button></center>
     </form>
     <form action="/users/<%=@user.id%>" method="POST">
       <input type="hidden" id="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete profile">
+      <center><button><a class="btn" type="submit" value="submit">Delete Profile</a></button></center>
     </form>
-    <div class="button-centering-container"> <a href="users/<%=@user.id%>" class="btn-more">Cancel</a> </div>
+    <center><a class="btn" href="/users/<%=@user.id%>" class="btn-more">Cancel</a></center>
+    <ul class="horizontal gray">
+      <%if session[:user_id] == @user.id%>
+        <a class="btn" href="/logout" style="float:right">Logout</a>
+      <%end%>
+      <a class="btn" href="/parks" style="float:right">Home</a>
+    </ul>
     <br>
-    <div class="content">
-    <h3>Recent trips:</h3>
-    <br>
-    <%@user.trips.reverse.each do |trip|%>
-    <p><strong><%=trip.park.name%></strong></p>
-    <p>Visited: <%=trip.visit_date%></p>
-    <p>Review: <%=trip.review%></p>
-    <div class="button-centering-container"> <a href='/trips/<%=trip.id%>' class="btn-more">View this trip</a></div><br><br>
-    <%end%>
+  <div align="left"><h2><%=@user.name.split(" ").first%>'s Recent Trips</h2></div>
+  <div class="grid-container">
+
+    <%@chunks.each do |trip|%>
+      <%if trip[0]%>
+        <div class="item<%=@i%>">
+          <img src="<%=trip[0].park.image%>"
+                width="307"
+                height="217">
+          <h2><%=trip[0].park.name%></h2>
+          <p><%=trip[0].park.description%></p>
+          <a class="btn" href="/trips/<%=trip[0].id%>">View this trip!</a> </div>
+          <%@i += 1%>
+        <%end%>
+      <%if trip[1]%>
+        <div class="item<%=@i%>">
+          <img src="<%=trip[1].park.image%>"
+                width="307"
+                height="217">
+          <h2><%=trip[1].park.name%></h2>
+          <p><%=trip[1].park.description%></p>
+          <a class="btn" href="/trips/<%=trip[1].id%>">View this trip!</a> </div>
+          <%@i += 1%>
+        <%end%>
+      <%if trip[2]%>
+        <div class="item<%=@i%>">
+          <img src="<%=trip[2].park.image%>"
+                width="307"
+                height="217">
+          <h2><%=trip[2].park.name%></h2>
+          <p><%=trip[2].park.description%></p>
+          <a class="btn" href="/trips/<%=trip[2].id%>">View this trip!</a> </div>
+          <%@i += 1%>
+        <%end%>
+        <%if trip[3]%>
+          <div class="item<%=@i%>">
+            <img src="<%=trip[3].park.image%>"
+                  width="307"
+                  height="217">
+            <h2><%=trip[3].park.name%></h2>
+            <p><%=trip[3].park.description%></p>
+            <a class="btn" href="/trips/<%=trip[3].id%>">View this trip!</a> </div>
+            <%@i += 1%>
+        <%end%>
+      <%end%>
+    </div>
   </div>
-</div>
-</div>

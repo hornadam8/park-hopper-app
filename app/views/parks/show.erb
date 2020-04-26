@@ -1,65 +1,61 @@
+<style>
+  .parallax {
+    /* The image used */
+    background-image: url("<%=@park.image%>");
+
+    /* Set a specific height */
+    height: 400px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 5px solid #424242;
+  }
+</style>
 <div class="container">
   <header><img src=<%=@park.image%>
                 alt=""
                 title=""
-                width="960"
-                height="650"
+                width="1430"
+                height="750"
                 class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
-    <style>
-
-      .parallax {
-        /* The image used */
-        background-image: url("<%=@park.image%>");
-
-        /* Set a specific height */
-        height: 600px;
-
-        /* Create the parallax scrolling effect */
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      a.btn {
-        display: inline-block;
-        padding: 10px;
-        background-color: #474548;
-        font-family: Verdana,sans-serif;
-        font-size: 15px;
-        line-height: 1.5;
-        text-decoration: none;
-        color: white;
-      }
-  </style>
 
     <h1><%=@park.name%></h1>
-    <div class="parallax"></div>
-
+    <br>
+    <br>
+    <br>
     <div class="content">
       <h3>Location:</h3>
       <p><%=@park.location%></p>
       <h3>Description:</h3>
       <p><%=@park.description%></p><br>
     <div class="parallax"></div>
+    <br>
       <h3>Information:</h3>
       <p><%=@park.information%></p><br>
     <div class="parallax"></div>
+    <br>
       <%if @park.weather != "There is no information available on the weather for this park."%>
         <h3>Weather:</h3>
         <p><%=@park.weather%></p><br>
       <%end%>
     <div class="parallax"></div>
+    <br>
       <%if @park.tours_and_camping != "There is no information available on the tours and camping in this park."%>
         <h3>Tours and Camping:</h3>
         <p><%=@park.tours_and_camping%></p><br>
       <%end%>
     <div class="parallax"></div>
+    <br>
       <%if @park.wildlife != "There is no information available on wildlife in this park."%>
         <h3>Wildlife:</h3>
         <p><%=@park.wildlife%></p><br>
       <%end%>
     <div class="parallax"></div>
+    <br>
       <%if !@park.nearby_parks.empty?%>
         <h4>Some nearby parks and trails to check out:</h4><br>
         <%@park.nearby_parks.split(", ").each do |park|%>
@@ -72,9 +68,7 @@
       <a class="btn" href="/parks" style="float:left">Home</a>
       <a class="btn" href="/users/<%=@user.id%>" style="float:right">Profile</a>
       <br>
-      <br>
-      <br>
-      <h3>Add a trip!</h3>
+      <h2>Add A Trip</h2>
       <form action="/trips/new" method="POST">
         <input type="hidden" id="park_id" name="park_id" value="<%=@park.id%>">
         <input type="hidden" id="user_id" name="user_id" value="<%=session[:user_id]%>">
@@ -83,13 +77,13 @@
                 value="2020-04-18"
                 min="1920-01-01" max="2020-12-31" required></p>
         <p>Write a review:<br>
-        <textarea name="review" style="margin: 0px; height: 253px; width: 271px;" required></textarea></p>
-        <a class="btn" type="submit" value="submit">Submit</a>
+        <textarea name="review" style="margin: 0px; height: 425px; width: 450px;" required></textarea></p>
+        <button><a class="btn" type="submit" value="submit">Submit</a></button>
       </form>
     </div>
 
     <div class="sidebar">
-      <h3>Recent visitor reviews:</h3>
+      <h2>Recent visitor reviews:</h2>
       <%@park.trips.reverse.each do |trip|%>
       <p><strong><%=trip.user.name%></strong></p>
       <p>Visited: <%=trip.visit_date%></p>

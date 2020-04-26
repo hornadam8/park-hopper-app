@@ -1,27 +1,21 @@
 class UsersController < ApplicationController
 
-  get "/users/signup" do
-    erb :"users/signup"
-  end
 
-  post "/users/signup" do
-    @user = User.new(params[:user])
-    if @user.save && params[:user][:password].length >= 6
-      session[:user_id] = @user.id
-      redirect "/parks"
-    else
-      redirect "/users/signup"
-    end
-  end
+
 
   get "/users/:id/edit" do
+    @park = Park.all[rand(61)]
     @user = User.find(session[:user_id])
+    @chunks = @user.trips.each_slice(4).to_a
+    @i = 1
     erb :"users/edit"
   end
 
   get "/users/:id" do
     @user = User.find(params[:id])
     @park = Park.all[rand(61)]
+    @chunks = @user.trips.each_slice(4).to_a
+    @i = 1
     erb :"users/show"
   end
 

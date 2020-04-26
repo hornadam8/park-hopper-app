@@ -13,22 +13,12 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: #044601;
-    color: #333;
+    background-color: black;
+    color: white;
     font-family: Sans-Serif;
     line-height: 18px;
   }
 
-  .wrapper {
-    background: #fff;
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
-    margin: 16px auto;
-    max-width: 960px;
-    padding: 2.25%; /* 18px / 800px */
-    width: 90%;
-  }
 
   h1 {
     font-size: 36px;
@@ -51,6 +41,51 @@
     margin-bottom: 18px;
   }
 
+  button {
+    display: inline-block;
+    background-color: #333;
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+  }
+
+  .img-responsive {
+    border: 5px solid #424242;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    background-color: #333;
+    padding: 10px;
+  }
+
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    color: #424242;
+    padding: 10px 0;
+    font-size: 15px;
+  }
+  a.btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #333;
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+  }
+  .col-md-8 {
+    text-align: center;
+  }
+
   .main {
     overflow: hidden;
   }
@@ -61,8 +96,9 @@
   }
 
   .sidebar {
-    background: #eee;
-    border: 1px solid #ccc;
+    background-color: #7C7C7C;
+    color: black;
+    border: 1px solid #424242;
     float: right;
     padding: 2.08333333333%; /* 5px / 240px */
     width: 30%; /* 240px / 800px */
@@ -84,12 +120,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .wrapper {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    width: auto;
-  }
+
 
   .content, .sidebar {
     float: none;
@@ -97,7 +128,7 @@
   }
 
   .sidebar {
-    background: transparent;
+    background-color: #7C7C7C;
     border: none;
     border-top: 2px solid #ccc;
     padding: 0;
