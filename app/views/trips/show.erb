@@ -1,21 +1,17 @@
 <div class="container">
-  <header><img src="https://www.nationalparks.org/sites/default/files/styles/large_list_image_2x/public/Acadia_iStock_000002062946.jpg?itok=t9JPKAN9&amp;timestamp=1471548671"
+  <header><img src="<%=@trip.park.image%>"
                 alt=""
                 title=""
-                width="960"
-                height="500"
+                width="1430"
+                height="750"
                 class="img-responsive main-image"></header>
-  <div class="col-md-8 col-md-offset-2">
-    <h1><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h1>
+    <center><h2><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h2></center>
     <%if @trip.user_id == session[:user_id]%>
-      <div class="button-centering-container"> <a href="/trips/<%=@trip.id%>/edit" class="btn-more">Edit this trip</a></div>
-      <div class="button-centering-container"> <a href="/users/<%=@trip.user_id%>" class="btn-more">Back to profile</a></div>
+      <a class="btn" href="/trips/<%=@trip.id%>/edit" class="btn-more" style="float:left">Edit this trip</a>
+      <a class="btn" href="/users/<%=@trip.user_id%>" class="btn-more" style="float:right">Back to profile</a>
     <%end%>
     <br>
-    <div class="content">
-    <h3>Visited: <%=@trip.visit_date%></h3>
+    <center><h3>Visited: <%=@trip.visit_date%></h3>
     <p>Review:<br>
-      <%=@trip.review%></p>
-  </div>
-</div>
+      <%=@trip.review%></p></center>
 </div>

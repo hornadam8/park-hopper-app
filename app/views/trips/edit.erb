@@ -1,39 +1,39 @@
 <div class="container">
-  <header><img src="https://www.nationalparks.org/sites/default/files/styles/large_list_image_2x/public/Acadia_iStock_000002062946.jpg?itok=t9JPKAN9&amp;timestamp=1471548671"
+  <header><img src="<%=@trip.park.image%>"
                 alt=""
                 title=""
-                width="960"
-                height="500"
+                width="1430"
+                height="750"
                 class="img-responsive main-image"></header>
-  <div class="col-md-8 col-md-offset-2">
-    <div class="sidebar">
-      <h3>Edit this trip!</h3>
-      <form action="/trips/<%=@trip.id%>" method="POST">
-        <input type="hidden" id="hidden" name="_method" value="PATCH">
-        <input type="hidden" id="park_id" name="park_id" value="<%=@trip.park.id%>">
-        <input type="hidden" id="user_id" name="user_id" value="<%=session[:userid]%>">
-        <p>Trip Date:<br>
-        <input type="date" id="visit_date" name="visit_date"
-                value="<%=@trip.visit_date%>"
-                min="1920-01-01" max="2020-12-31"></p>
-        <p>Write a review:<br>
-        <textarea name="review" value="<%=@trip.review%>" style="margin: 0px; height: 253px; width: 271px;"></textarea></p>
-        <button type="submit" value="submit">Submit</button>
-      </form>
-      <br>
-      <p>...or delete this trip:</p>
-      <form action="/trips/<%=@trip.id%>" method="POST">
-        <input type="hidden" id="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete trip">
-      </form>
-    </div>
-    <h1><%=@user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h1>
-    <div class="button-centering-container"> <a href="/users/<%=@trip.user_id%>" class="btn-more">Back to profile</a></div>
+    <center><h1><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h1></center>
+    <%if @trip.user_id == session[:user_id]%>
+      <a class="btn" href="/users/<%=@trip.user_id%>" class="btn-more" style="float:left">Back to profile</a>
+      <a class="btn" href="/trips/<%=@trip.id%>" class="btn-more" style="float:right">Cancel</a>
+    <%end%>
     <br>
-    <div class="content">
-    <h3>Visited: <%=@trip.visit_date%></h3>
-    <p>Review:<br>
-      <%=@trip.review%></p>
-  </div>
-</div>
+    <br>
+    <br>
+    <center><h3>Visited: <%=@trip.visit_date%></h3>
+    <form action="/trips/<%=@trip.id%>" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="PATCH">
+      <input type="hidden" id="park_id" name="park_id" value="<%=@trip.park.id%>">
+      <input type="hidden" id="user_id" name="user_id" value="<%=session[:userid]%>">
+      <p>Trip Date:<br>
+      <input type="date" id="visit_date" name="visit_date"
+              value="<%=@trip.visit_date%>"
+              min="1920-01-01" max="2020-12-31"></p>
+      <p>Review:<br>
+        <%=@trip.review%></p>
+      <p>Edit this review:<br>
+      <textarea name="review" value="<%=@trip.review%>" style="margin: 0px; height: 500px; width: 1000px;"></textarea></p>
+      <button><a class="btn" type="submit" value="submit">Submit</a></button>
+      <br>
+      <br>
+    </form></center>
+    <br>
+    <p>...or delete this trip:</p>
+    <form action="/trips/<%=@trip.id%>" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <button><a class="btn" type="submit" value="Delete trip">Delete Trip</a>
+    </form>
 </div>
