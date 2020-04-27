@@ -1,7 +1,4 @@
-
-
-Extra TODO: css styling
-Extra TODO: Park.all.chunk(3) to create nicer index layout
+Extra TODO: search bar
 
 -models
 

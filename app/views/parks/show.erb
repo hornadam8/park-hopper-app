@@ -19,7 +19,7 @@
                 alt=""
                 title=""
                 width="1430"
-                height="750"
+                height="765"
                 class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
 
@@ -28,36 +28,36 @@
     <br>
     <br>
     <div class="content">
-      <h3>Location:</h3>
-      <p><%=@park.location%></p>
-      <h3>Description:</h3>
-      <p><%=@park.description%></p><br>
-    <div class="parallax"></div>
-    <br>
-      <h3>Information:</h3>
+      <h2>Description</h2>
+        <p><%=@park.description%></p><br>
+      <div class="parallax"></div>
+      <h2>Information</h2>
       <p><%=@park.information%></p><br>
     <div class="parallax"></div>
     <br>
       <%if @park.weather != "There is no information available on the weather for this park."%>
-        <h3>Weather:</h3>
+        <h2>Weather</h2>
         <p><%=@park.weather%></p><br>
       <%end%>
     <div class="parallax"></div>
     <br>
       <%if @park.tours_and_camping != "There is no information available on the tours and camping in this park."%>
-        <h3>Tours and Camping:</h3>
+        <h2>Tours and Camping</h2>
         <p><%=@park.tours_and_camping%></p><br>
       <%end%>
     <div class="parallax"></div>
     <br>
       <%if @park.wildlife != "There is no information available on wildlife in this park."%>
-        <h3>Wildlife:</h3>
+        <h2>Wildlife</h2>
         <p><%=@park.wildlife%></p><br>
       <%end%>
     <div class="parallax"></div>
     <br>
+    <h2>Location</h2>
+      <p><%=@park.location%></p>
+    <br>
       <%if !@park.nearby_parks.empty?%>
-        <h4>Some nearby parks and trails to check out:</h4><br>
+        <h3>Some nearby parks and trails to check out:</h3><br>
         <%@park.nearby_parks.split(", ").each do |park|%>
           <p><%=park.gsub("[","").gsub("]","").delete_prefix('"').delete_suffix('"')%></p><br>
         <%end%>
@@ -85,10 +85,10 @@
     <div class="sidebar">
       <h2>Recent visitor reviews:</h2>
       <%@park.trips.reverse.each do |trip|%>
-      <p><strong><%=trip.user.name%></strong></p>
+      <h3><%=trip.user.name%></h3>
       <p>Visited: <%=trip.visit_date%></p>
       <p>Review: <%=trip.review%></p>
-      <div class="button-centering-container"> <a href='/trips/<%=trip.id%>' class="btn-more">View this trip</a></div><br><br>
+      <a class="btn" href='/trips/<%=trip.id%>' class="btn-more">View this trip</a><br><br>
       <%end%>
     </div>
 

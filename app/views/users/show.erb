@@ -6,17 +6,17 @@
                 height="750"
                 class="img-responsive main-image">
   </header>
-
-    <center><h1><%=@user.name%></h1></center>
-    <ul class="horizontal gray">
-      <%if session[:user_id] == @user.id%>
-        <a class="btn" href="/logout" style="float:right">Logout</a>
-        <a class="btn" href="/users/<%=@user.id%>/edit" style="float:right">Edit profile</a>
-      <%end%>
-      <a class="btn" href="/parks" style="float:right">Home</a>
-    </ul>
+  <ul class="horizontal gray">
+    <%if session[:user_id] == @user.id%>
+      <a class="btn" href="/logout" style="float:right">Logout</a>
+      <a class="btn" href="/users/<%=@user.id%>/edit" style="float:right">Edit profile</a>
+    <%end%>
+    <a class="btn" href="/parks" style="float:right">Home</a>
+  </ul>
+  <br>
+    <div align="left"><h1><%=@user.name%></h1></div>
     <br>
-  <div align="left"><h2><%=@user.name.split(" ").first%>'s Recent Trips</h2></div>
+  <div align="center"><h2><%=@user.name.split(" ").first%>'s Recent Trips</h2></div>
   <div class="grid-container">
 
     <%@chunks.each do |trip|%>

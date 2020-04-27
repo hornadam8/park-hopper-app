@@ -11,7 +11,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border: 70px solid black;
+    border: 60px solid black;
   }
 </style>
 <div class="container">
@@ -27,8 +27,8 @@
 
 
 
-<div class="sidebar">
-  <h2>Sign Up</h2>
+<div class="sidebar" style="width: 300px;">
+  <center><h2>Sign Up</h2>
   <form action="/signup" method="post">
     <p>Name:<br>
     <input type="text" name="user[name]" required</p>
@@ -38,8 +38,9 @@
     <input type="password" id="user[password]" name="user[password]" required</p>
     <br>
     <br>
-    <button><a class="btn" type="submit" value="submit">Sign Up</a></button>
-  </form>
+    <a class="btn" type="submit" value="submit">Sign Up</a>
+  </form><br>
+  <a class="btn" href="/login">Return to Login</a></center>
 </div>
 <div class="parallax"></div>
 

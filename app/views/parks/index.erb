@@ -12,15 +12,14 @@
       height="225"
       class="img-responsive main-image">
   </header>
+  <br>
+  <ul class="horizontal gray">
+    <a class="btn" href="/users/<%=@user.id%>" style="float:left">View profile</a>
+    <a class="btn" href="/logout" style="float:right">Logout</a>
+  </ul>
+  <br>
   <center><h1>Welcome back <%=@user.name.split(" ").first%>!</h1></center>
-    <ul class="horizontal gray">
-      <a class="btn" href="/users/<%=@user.id%>" style="float:left">View profile</a>
-      <a class="btn" href="/logout" style="float:right">Logout</a>
-    </ul>
     <br>
-    <br>
-    <br>
-
     <div class="grid-container">
 
         <%@chunks.each do |park|%>
