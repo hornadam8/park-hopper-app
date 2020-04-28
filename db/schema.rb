@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200423223651) do
+ActiveRecord::Schema.define(version: 20200428151422) do
 
   create_table "parks", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20200423223651) do
     t.string "wildlife"
     t.string "nearby_parks"
     t.string "image"
+    t.float  "latitude"
+    t.float  "longitude"
   end
 
   create_table "trips", force: :cascade do |t|

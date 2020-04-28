@@ -1,4 +1,6 @@
+require 'Geocoder'
 class Park < ActiveRecord::Base
+  extend Geocoder::Model::ActiveRecord
   validates :name, presence: true
   validates :link, presence: true
   validates :location, presence: true
@@ -11,4 +13,7 @@ class Park < ActiveRecord::Base
   validates :image, presence: true
   has_many :trips
   has_many :users, through: :trips
+  geocoded_by :name
+  after_validation :geocode
+  after_save :geocode
 end

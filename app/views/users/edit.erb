@@ -12,12 +12,12 @@
     <form action="/users/<%=@user.id%>" method="POST">
       <input type="hidden" id="hidden" name="_method" value="PATCH">
       <textarea type="text" style="margin: 0px; height: 25 px; width: 50 px; font-size: 20px; text-align: center;" name="user[name]"><%=@user.name%></textarea></center><br><br>
-      <a class="btn" type="submit" value="submit">Apply Changes</a>
+      <button><a class="btn" type="submit" value="submit">Apply Changes</a></button>
     </form>
 
     <form action="/users/<%=@user.id%>" method="POST">
       <input type="hidden" id="hidden" name="_method" value="DELETE">
-      <a class="btn" type="submit" value="submit">Delete Profile</a>
+      <button><a class="btn" type="submit" value="submit">Delete Profile</a></button>
     </form>
 
     <a class="btn" href="/users/<%=@user.id%>" class="btn-more">Cancel</a></div>

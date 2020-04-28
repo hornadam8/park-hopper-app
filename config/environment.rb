@@ -4,6 +4,7 @@ require 'bundler/setup'
 require 'require_all'
 require 'nokogiri'
 require 'open-uri'
+require 'geocoder'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
 ActiveRecord::Base.establish_connection(

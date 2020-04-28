@@ -12,6 +12,9 @@ gem 'pry'
 gem 'bcrypt'
 gem 'dotenv'
 gem 'tux'
+gem 'json'
+gem 'geocoder'
+gem 'gmaps4rails'
 
 group :test do
   gem 'rspec'

@@ -1,3 +1,4 @@
+Extra todo: Convert file to url? Store image to db? 
 Extra TODO: search bar
 
 -models
