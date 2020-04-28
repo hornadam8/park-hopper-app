@@ -7,17 +7,21 @@
                 class="img-responsive main-image">
   </header>
 
-    <center><h1><%=@user.name%></h1></center>
+    <div align="left"><h1><%=@user.name%></h1>
+
     <form action="/users/<%=@user.id%>" method="POST">
       <input type="hidden" id="hidden" name="_method" value="PATCH">
-      <center><textarea type="text" style="margin: 0px; height: 25 px; width: 50 px; font-size: 20px; text-align: center;" name="user[name]"><%=@user.name%></textarea></center><br><br>
-      <center><button><a class="btn" type="submit" value="submit">Apply Changes</a></button></center>
+      <textarea type="text" style="margin: 0px; height: 25 px; width: 50 px; font-size: 20px; text-align: center;" name="user[name]"><%=@user.name%></textarea></center><br><br>
+      <a class="btn" type="submit" value="submit">Apply Changes</a>
     </form>
+
     <form action="/users/<%=@user.id%>" method="POST">
       <input type="hidden" id="hidden" name="_method" value="DELETE">
-      <center><button><a class="btn" type="submit" value="submit">Delete Profile</a></button></center>
+      <a class="btn" type="submit" value="submit">Delete Profile</a>
     </form>
-    <center><a class="btn" href="/users/<%=@user.id%>" class="btn-more">Cancel</a></center>
+
+    <a class="btn" href="/users/<%=@user.id%>" class="btn-more">Cancel</a></div>
+
     <ul class="horizontal gray">
       <%if session[:user_id] == @user.id%>
         <a class="btn" href="/logout" style="float:right">Logout</a>
@@ -25,10 +29,12 @@
       <a class="btn" href="/parks" style="float:right">Home</a>
     </ul>
     <br>
+
   <div align="left"><h2><%=@user.name.split(" ").first%>'s Recent Trips</h2></div>
   <div class="grid-container">
 
-    <%@chunks.each do |trip|%>
+    <%@rows.each do |trip|%>
+
       <%if trip[0]%>
         <div class="item<%=@i%>">
           <img src="<%=trip[0].park.image%>"
@@ -37,8 +43,9 @@
           <h2><%=trip[0].park.name%></h2>
           <p><%=trip[0].park.description%></p>
           <a class="btn" href="/trips/<%=trip[0].id%>">View this trip!</a> </div>
-          <%@i += 1%>
-        <%end%>
+        <%@i += 1%>
+      <%end%>
+
       <%if trip[1]%>
         <div class="item<%=@i%>">
           <img src="<%=trip[1].park.image%>"
@@ -47,8 +54,9 @@
           <h2><%=trip[1].park.name%></h2>
           <p><%=trip[1].park.description%></p>
           <a class="btn" href="/trips/<%=trip[1].id%>">View this trip!</a> </div>
-          <%@i += 1%>
-        <%end%>
+        <%@i += 1%>
+      <%end%>
+
       <%if trip[2]%>
         <div class="item<%=@i%>">
           <img src="<%=trip[2].park.image%>"
@@ -57,18 +65,20 @@
           <h2><%=trip[2].park.name%></h2>
           <p><%=trip[2].park.description%></p>
           <a class="btn" href="/trips/<%=trip[2].id%>">View this trip!</a> </div>
-          <%@i += 1%>
-        <%end%>
-        <%if trip[3]%>
-          <div class="item<%=@i%>">
-            <img src="<%=trip[3].park.image%>"
-                  width="307"
-                  height="217">
-            <h2><%=trip[3].park.name%></h2>
-            <p><%=trip[3].park.description%></p>
-            <a class="btn" href="/trips/<%=trip[3].id%>">View this trip!</a> </div>
-            <%@i += 1%>
-        <%end%>
+        <%@i += 1%>
       <%end%>
-    </div>
+
+      <%if trip[3]%>
+        <div class="item<%=@i%>">
+          <img src="<%=trip[3].park.image%>"
+                width="307"
+                height="217">
+          <h2><%=trip[3].park.name%></h2>
+          <p><%=trip[3].park.description%></p>
+          <a class="btn" href="/trips/<%=trip[3].id%>">View this trip!</a> </div>
+        <%@i += 1%>
+      <%end%>
+
+    <%end%>
   </div>
+</div>

@@ -2,14 +2,17 @@ class TripsController < ApplicationController
 
   post "/trips/new" do
     @trip = Trip.create(params)
-    redirect "/parks/#{@trip.park_id}"
+    redirect "/trips/#{@trip.id}"
   end
 
 
   get "/trips/:id" do
-    @trip = Trip.find(params[:id])
-    @user = User.find(session[:user_id])
-    erb :"trips/show"
+    if Trip.find_by(id: params[:id])
+      @trip = Trip.find(params[:id])
+      erb :"trips/show"
+    else
+      status 404
+    end
   end
 
 
@@ -29,11 +32,12 @@ class TripsController < ApplicationController
 
   delete "/trips/:id" do
     @trip = Trip.find(params[:id])
-    if current_user.id == session[:user_id]
+    if current_user.id == @trip.user_id
       @trip.destroy
       redirect "/users/#{current_user.id}"
     else
       redirect "/logout"
     end
   end
+
 end

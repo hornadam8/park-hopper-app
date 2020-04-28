@@ -1,8 +1,3 @@
-<style>
-
-
-</style>
-
 <div class="container">
   <header>
     <img src="images/ParkHopper.jpg"
@@ -12,6 +7,7 @@
       height="225"
       class="img-responsive main-image">
   </header>
+
   <br>
   <ul class="horizontal gray">
     <a class="btn" href="/users/<%=@user.id%>" style="float:left">View profile</a>
@@ -20,9 +16,11 @@
   <br>
   <center><h1>Welcome back <%=@user.name.split(" ").first%>!</h1></center>
     <br>
+
     <div class="grid-container">
 
-        <%@chunks.each do |park|%>
+      <%@rows.each do |park|%>
+
         <div class="item<%=@i%>">
           <img src="<%=park[0].image%>"
           width="307"
@@ -31,6 +29,7 @@
           <p><%=park[0].description%></p>
           <a class="btn" href="parks/<%=park[0].id%>" class="btn">View park page/add a trip!</a> </div>
           <%@i += 1%>
+
         <div class="item<%=@i%>">
           <img src="<%=park[1].image%>"
           width="307"
@@ -39,6 +38,7 @@
           <p><%=park[1].description%></p>
           <a class="btn" href="parks/<%=park[1].id%>">View park page/add a trip!</a> </div>
           <%@i += 1%>
+
         <div class="item<%=@i%>">
         <%if park[2]%>
           <img src="<%=park[2].image%>"
@@ -49,6 +49,7 @@
           <a class="btn" href="parks/<%=park[2].id%>">View park page/add a trip!</a> </div>
           <%@i += 1%>
         <%end%>
+
         <div class="item<%=@i%>">
         <%if park[3]%>
           <img src="<%=park[3].image%>"
@@ -57,9 +58,9 @@
           <h2><%=park[3].name%></h2>
           <p><%=park[3].description%></p>
           <a class="btn" href="parks/<%=park[3].id%>">View park page/add a trip!</a> </div>
-        <%@i += 1%>
+          <%@i += 1%>
         <%end%>
-      <%end%>
-      </div>
+
+    <%end%>
   </div>
 </div>

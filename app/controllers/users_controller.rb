@@ -6,17 +6,21 @@ class UsersController < ApplicationController
   get "/users/:id/edit" do
     @park = Park.all[rand(61)]
     @user = User.find(session[:user_id])
-    @chunks = @user.trips.each_slice(4).to_a
+    @rows = @user.trips.each_slice(4).to_a
     @i = 1
     erb :"users/edit"
   end
 
   get "/users/:id" do
-    @user = User.find(params[:id])
-    @park = Park.all[rand(61)]
-    @chunks = @user.trips.each_slice(4).to_a
-    @i = 1
-    erb :"users/show"
+    if User.find_by(id: params[:id])
+      @user = User.find(params[:id])
+      @park = Park.all[rand(61)]
+      @rows = @user.trips.each_slice(4).to_a
+      @i = 1
+      erb :"users/show"
+    else
+      status 404
+    end
   end
 
 
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
       @user.destroy
       redirect "/login"
     else
-      redirect "/logout"
+      status 403
     end
   end
 
