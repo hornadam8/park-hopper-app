@@ -60,9 +60,6 @@
       <%end%>
     <div class="parallax"></div>
     <br>
-    <h2>Location</h2>
-      <p><%=@park.location%></p>
-    <br>
       <%if !@park.nearby_parks.empty?%>
         <h3>Some nearby parks and trails to check out:</h3><br>
         <%@park.nearby_parks.split(", ").each do |park|%>
@@ -72,7 +69,7 @@
     </div>
 
 
-    <iframe width="503" height="450" frameborder="0" style="border:0" id="preview" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?q=<%=@park.name%>&zoom=11&amp;key=AIzaSyB7GOlr2OvFpelrOp1rqrVsUm8EoASS1oE"></iframe>
+    <iframe width="510" height="450" frameborder="0" style="border:0" id="preview" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?q=<%=@park.name%>&zoom=11&amp;key=AIzaSyB7GOlr2OvFpelrOp1rqrVsUm8EoASS1oE"></iframe>
 
 
     <div class="sidebar">

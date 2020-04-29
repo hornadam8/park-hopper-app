@@ -1,4 +1,6 @@
 require './config/environment'
+require 'dotenv'
+Dotenv.load('.env.local')
 
 
 
