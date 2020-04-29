@@ -69,7 +69,7 @@
     </div>
 
 
-    <iframe width="510" height="450" frameborder="0" style="border:0" id="preview" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?q=<%=@park.name%>&zoom=11&amp;key=AIzaSyB7GOlr2OvFpelrOp1rqrVsUm8EoASS1oE"></iframe>
+    <iframe width="510" height="450" frameborder="0" style="border:0" id="preview" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?q=<%=@park.name%>&zoom=11&amp;key=<%=ENV['GOOGLE_API']%>"></iframe>
 
 
     <div class="sidebar">
