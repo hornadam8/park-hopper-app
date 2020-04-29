@@ -11,7 +11,9 @@
       <a class="btn" href="/users/<%=@trip.user_id%>" class="btn-more" style="float:right">Back to profile</a>
     <%end%>
     <br>
-    <center><h3>Visited: <%=@trip.visit_date%></h3>
-    <p>Review:<br>
-      <%=@trip.review%></p></center>
+    <center><i><h2>"<%=@trip.review%>"</h2></i>
+    <p>Visited: <%=@trip.visit_date%></p>
+    <a class="btn" href="/parks/<%=@trip.park_id%>" class="btn-more">Park Page</a>
+    </center>
+
 </div>
