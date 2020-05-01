@@ -16,4 +16,19 @@ class Park < ActiveRecord::Base
   geocoded_by :name
   after_validation :geocode
   after_save :geocode
+
+  def self.search(search)
+    if search
+      @parks = self.find_by(name: search)
+      if @parks
+        self.where(name: @parks)
+      else
+        @parks = self.all
+      end
+    else
+      @parks = self.all
+    end
+    @parks
+  end
+
 end

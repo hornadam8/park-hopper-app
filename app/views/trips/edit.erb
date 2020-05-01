@@ -4,26 +4,35 @@
                 title=""
                 width="1430"
                 height="750"
-                class="img-responsive main-image"></header>
+                class="img-responsive main-image">
+    </header>
+
     <center><h2><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h2></center>
+
     <a class="btn" href="/users/<%=@trip.user_id%>" class="btn-more" style="float:left">Back to profile</a>
     <a class="btn" href="/trips/<%=@trip.id%>" class="btn-more" style="float:right">Cancel</a>
     <br>
+
     <center><i><h2>"<%=@trip.review%>"</h2></i>
+
     <p>Visited: <%=@trip.visit_date%></p>
     <a class="btn" href="/parks/<%=@trip.park_id%>" class="btn-more">Park Page</a>
     <br>
     <br>
+
       <form action="/trips/<%=@trip.id%>" method="POST">
         <input type="hidden" id="hidden" name="_method" value="PATCH">
         <input type="hidden" id="park_id" name="park_id" value="<%=@trip.park.id%>">
         <input type="hidden" id="user_id" name="user_id" value="<%=session[:userid]%>">
+
         <p>Edit Trip Date:<br>
+
         <input type="date" id="visit_date" name="visit_date"
                 value="<%=@trip.visit_date%>"
                 min="1920-01-01" max="2020-12-31"></p>
         <p>Edit Review:<br>
         <textarea name="review" value="<%=@trip.review%>" style="margin: 0px; height: 500px; width: 1000px;"></textarea></p>
         <button><a class="btn" type="submit" value="submit">Submit</a></button>
+      </form>
     </center>
 </div>

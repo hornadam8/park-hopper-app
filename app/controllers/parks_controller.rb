@@ -1,8 +1,8 @@
 class ParksController < ApplicationController
 
   get "/parks" do
+    @parks = Park.search(params[:search])
     @user = User.find(session[:user_id])
-    @parks = Park.all
     @rows = @parks.each_slice(4).to_a
     @i = 1
     erb :"parks/index"
@@ -18,5 +18,10 @@ class ParksController < ApplicationController
       status 404
     end
   end
+
+  private
+    def parks_params
+      params.require(:parks).permit(:name, :name, :search)
+    end
 
 end
