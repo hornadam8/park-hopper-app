@@ -18,6 +18,16 @@
   <center><h1>Welcome back <%=@user.name.split(" ").first%>!</h1></center>
     <br>
 
+  <form action="/parks/search" method="POST" style="float:right">
+    <input type="text" name="search" id="search" placeholder="Search for a park">
+    <button><a class="btn" type="submit" value="submit">Search</a></button>
+  </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
     <div class="grid-container">
 
       <%@rows.each do |park|%>
