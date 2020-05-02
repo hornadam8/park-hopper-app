@@ -20,7 +20,7 @@ class ParksController < ApplicationController
   end
 
   post "/parks/search" do
-    if Park.all.select{|park| park.name.include?(params[:search].titleize)}
+    if Park.all.select{|park| park.name.include?(params[:search].titleize)}[0]
       @park = Park.all.select{|park| park.name.include?(params[:search].titleize)}[0]
       redirect "/parks/#{@park.id}"
     else

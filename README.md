@@ -6,3 +6,5 @@ These trips are viewable on the users profile page.
 
 To see this application at work, clone this repository, access its directory
 from your terminal and run bundle install, then shotgun. The site will be visible at localhost:9393.
+
+The license for this application is listed in the LICENSE.txt file
