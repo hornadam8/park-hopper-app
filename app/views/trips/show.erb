@@ -8,8 +8,8 @@
     <center><h2><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h2></center>
     <%if @trip.user_id == session[:user_id]%>
       <a class="btn" href="/trips/<%=@trip.id%>/edit" class="btn-more" style="float:left">Edit this trip</a>
-      <a class="btn" href="/users/<%=@trip.user_id%>" class="btn-more" style="float:right">Back to profile</a>
     <%end%>
+    <a class="btn" href="/users/<%=@trip.user_id%>" class="btn-more" style="float:right">Back to profile</a>
     <br>
     <center><i><h2>"<%=@trip.review%>"</h2></i>
     <p>Visited: <%=@trip.visit_date%></p>
