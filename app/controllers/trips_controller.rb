@@ -1,10 +1,10 @@
 class TripsController < ApplicationController
 
+
   post "/trips/new" do
     @trip = Trip.create(params)
     redirect "/trips/#{@trip.id}"
   end
-
 
   get "/trips/:id" do
     if logged_in? && Trip.find_by(id: params[:id])
@@ -14,8 +14,6 @@ class TripsController < ApplicationController
       erb :misadventure
     end
   end
-
-
 
   get "/trips/:id/edit" do
     @trip = Trip.find(params[:id])

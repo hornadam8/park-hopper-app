@@ -24,11 +24,11 @@ class ParkScraper
   def assign_attributes
 
     page = Scraper.get_park_page(self.link).css(".fieldset-wrapper")
-
+    alt_page = Scraper.get_park_page(self.link).css(".page")
     if page.children[5].children[1]
      self.image =  page.children[5].children[1].children[1].children[3].children[1].attributes["src"].to_s
     else
-     self.image = Scraper.get_park_page(self.link).css(".page").children[3].children[1].children[1].children[3].children[1].children[1].children[1].children[1].children[3].children[1].children[1].children[1].children[1].children[1].children[1].children[0].children[0].children[0].children[0].children[1].attributes["src"].to_s
+     self.image = alt_page.children[3].children[1].children[1].children[3].children[1].children[1].children[1].children[1].children[3].children[1].children[1].children[1].children[1].children[1].children[1].children[0].children[0].children[0].children[0].children[1].attributes["src"].to_s
     end
 
 

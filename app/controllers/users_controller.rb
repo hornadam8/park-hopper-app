@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
 
-
-
   get "/users/:id/edit" do
     if logged_in? && current_user.id == params[:id]
       @park = Park.all[rand(61)]
@@ -27,8 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   patch "/users/:id" do
     @user = User.find(session[:user_id])
     @user.update(params[:user])
@@ -44,5 +40,6 @@ class UsersController < ApplicationController
       status 403
     end
   end
+
 
 end
