@@ -15,7 +15,7 @@ class ParksController < ApplicationController
       @park = Park.find(params[:id])
       erb :"parks/show"
     else
-      status 404
+      erb :misadventure
     end
   end
 
@@ -24,7 +24,7 @@ class ParksController < ApplicationController
       @park = Park.all.select{|park| park.name.include?(params[:search].titleize)}[0]
       redirect "/parks/#{@park.id}"
     else
-      status 404
+      erb :misadventure
     end
   end
 

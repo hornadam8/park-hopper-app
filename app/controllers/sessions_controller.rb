@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect "/parks"
     else
-      redirect "/signup"
+      erb :misadventure
     end
   end
 
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect "/parks"
     else
-      redirect "/login"
+      erb :misadventure
     end
   end
 
