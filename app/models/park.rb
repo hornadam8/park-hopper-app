@@ -19,7 +19,7 @@ class Park < ActiveRecord::Base
 
   def self.search(search)
     if search
-      @parks = self.find_by(name: search)
+      @parks = self.all.select{|park| park.name.include?(search.titleize)}[0]
       if @parks
         self.where(name: @parks.name)
       else
