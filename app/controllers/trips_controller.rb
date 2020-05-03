@@ -7,11 +7,11 @@ class TripsController < ApplicationController
 
 
   get "/trips/:id" do
-    if Trip.find_by(id: params[:id])
+    if logged_in? && Trip.find_by(id: params[:id])
       @trip = Trip.find(params[:id])
       erb :"trips/show"
     else
-      status 404
+      erb :misadventure
     end
   end
 
@@ -19,8 +19,12 @@ class TripsController < ApplicationController
 
   get "/trips/:id/edit" do
     @trip = Trip.find(params[:id])
-    @user = User.find(session[:user_id])
-    erb :"trips/edit"
+    if logged_in? && @trip.user_id == current_user.id
+        @user = current_user
+        erb :"trips/edit"
+    else
+      erb :misadventure
+    end
   end
 
   patch "/trips/:id" do
@@ -32,7 +36,7 @@ class TripsController < ApplicationController
 
   delete "/trips/:id" do
     @trip = Trip.find(params[:id])
-    if current_user.id == @trip.user_id
+    if logged_in? && current_user.id == @trip.user_id
       @trip.destroy
       redirect "/users/#{current_user.id}"
     else

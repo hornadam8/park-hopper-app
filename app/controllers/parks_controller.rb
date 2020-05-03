@@ -1,16 +1,20 @@
 class ParksController < ApplicationController
 
   get "/parks" do
-    @parks = Park.search(params[:search])
-    @user = User.find(session[:user_id])
-    @rows = @parks.each_slice(4).to_a
-    @i = 1
-    erb :"parks/index"
+    if logged_in?
+      @user = current_user
+      @parks = Park.search(params[:search])
+      @rows = @parks.each_slice(4).to_a
+      @i = 1
+      erb :"parks/index"
+    else
+      erb :misadventure
+    end
   end
 
 
   get "/parks/:id" do
-    if Park.find_by(id: params[:id])
+    if logged_in? && Park.find_by(id: params[:id])
       @user = User.find(session[:user_id])
       @park = Park.find(params[:id])
       erb :"parks/show"
