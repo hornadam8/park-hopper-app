@@ -1,30 +1,32 @@
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <header>
+    <img src="<%=@park.image%>"
+          width="1430"
+          height="765"
+          class="img-responsive main-image">
+  </header>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
   <style>
-  .parallax {
-    /* The image used */
-    background-image: url("<%=@park.image%>");
-
-    /* Set a specific height */
-    height: 400px;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 5px solid #424242;
-  }
+    .parallax {
+      background-image: url("<%=@park.image%>");
+      height: 400px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border: 5px solid #424242;
+    }
   </style>
+
 </head>
+
+
 <body>
   <div class="container">
-    <header><img src=<%=@park.image%>
-                alt=""
-                title=""
-                width="1430"
-                height="765"
-                class="img-responsive main-image"></header>
+
   <div class="col-md-8 col-md-offset-2">
     <a class="btn" href="/parks" style="float:left">Home</a>
     <a class="btn" href="/users/<%=@user.id%>" style="float:right">Profile</a>
@@ -35,31 +37,37 @@
     <br>
     <br>
     <div class="content">
+
       <h2>Description</h2>
-        <p><%=@park.description%></p><br>
+      <p><%=@park.description%></p><br>
       <div class="parallax"></div>
+
       <h2>Information</h2>
       <p><%=@park.information%></p><br>
-    <div class="parallax"></div>
-    <br>
+      <div class="parallax"></div>
+      <br>
+
       <%if @park.weather != "There is no information available on the weather for this park."%>
         <h2>Weather</h2>
         <p><%=@park.weather%></p><br>
+        <div class="parallax"></div>
+        <br>
       <%end%>
-    <div class="parallax"></div>
-    <br>
+
       <%if @park.tours_and_camping != "There is no information available on the tours and camping in this park."%>
         <h2>Tours and Camping</h2>
         <p><%=@park.tours_and_camping%></p><br>
+        <div class="parallax"></div>
+        <br>
       <%end%>
-    <div class="parallax"></div>
-    <br>
+
       <%if @park.wildlife != "There is no information available on wildlife in this park."%>
         <h2>Wildlife</h2>
         <p><%=@park.wildlife%></p><br>
+        <div class="parallax"></div>
+        <br>
       <%end%>
-    <div class="parallax"></div>
-    <br>
+
       <%if !@park.nearby_parks.empty?%>
         <h3>Some nearby parks and trails to check out:</h3><br>
         <%@park.nearby_parks.split(", ").each do |park|%>
@@ -68,8 +76,15 @@
       <%end%>
     </div>
 
-
-    <iframe width="510" height="450" frameborder="0" style="border:0" id="preview" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?q=<%=@park.name%>&zoom=11&amp;key=<%=ENV['GOOGLE_API']%>"></iframe>
+        <iframe
+            width="510"
+            height="450"
+            frameborder="0"
+            style="border:0"
+            id="preview"
+            allowfullscreen=""
+            src="https://www.google.com/maps/embed/v1/place?q=<%=@park.name%>&zoom=11&amp;key=<%=ENV['GOOGLE_API']%>">
+        </iframe>
 
 
     <div class="sidebar">

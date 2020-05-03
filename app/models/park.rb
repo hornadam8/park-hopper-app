@@ -21,7 +21,7 @@ class Park < ActiveRecord::Base
     if search
       @parks = self.find_by(name: search)
       if @parks
-        self.where(name: @parks)
+        self.where(name: @parks.name)
       else
         @parks = self.all
       end
