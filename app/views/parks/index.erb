@@ -1,10 +1,8 @@
 <div class="container">
   <header>
-    <img src="images/ParkHopper.jpg"
-      alt=""
-      title=""
-      width="1430"
-      height="225"
+    <img src="images/ParkHopper.jpg";
+      width="1430";
+      height="225";
       class="img-responsive main-image">
   </header>
 
@@ -33,8 +31,8 @@
       <%@rows.each do |park|%>
 
         <div class="item<%=@i%>">
-          <img src="<%=park[0].image%>"
-          width="307"
+          <img src="<%=park[0].image%>";
+          width="307";
           height="217">
           <h2><%=park[0].name%></h2>
           <p><%=park[0].description%></p>
@@ -42,8 +40,8 @@
           <%@i += 1%>
 
         <div class="item<%=@i%>">
-          <img src="<%=park[1].image%>"
-          width="307"
+          <img src="<%=park[1].image%>";
+          width="307";
           height="217">
           <h2><%=park[1].name%></h2>
           <p><%=park[1].description%></p>
@@ -52,8 +50,8 @@
 
         <div class="item<%=@i%>">
         <%if park[2]%>
-          <img src="<%=park[2].image%>"
-          width="307"
+          <img src="<%=park[2].image%>";
+          width="307";
           height="217">
           <h2><%=park[2].name%></h2>
           <p><%=park[2].description%></p>
@@ -63,8 +61,8 @@
 
         <div class="item<%=@i%>">
         <%if park[3]%>
-          <img src="<%=park[3].image%>"
-          width="307"
+          <img src="<%=park[3].image%>";
+          width="307";
           height="217">
           <h2><%=park[3].name%></h2>
           <p><%=park[3].description%></p>

@@ -1,9 +1,9 @@
 <div class="container">
-  <header><img src="<%=@trip.park.image%>"
-                alt=""
-                title=""
-                width="1430"
-                height="750"
+  <header><img src="<%=@trip.park.image%>";
+                alt="";
+                title="";
+                width="1430";
+                height="750";
                 class="img-responsive main-image"></header>
     <center><h2><%=@trip.user.name.split(" ").first%>'s trip to <%=@trip.park.name%></h2></center>
     <%if @trip.user_id == session[:user_id]%>
