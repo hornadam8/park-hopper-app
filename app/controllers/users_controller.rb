@@ -2,9 +2,10 @@ class UsersController < ApplicationController
 
 
   get "/users/:id/edit" do
-    if logged_in? && current_user.id == params[:id]
+    set_user
+    if logged_in? && auth_user?
       @park = Park.all[rand(61)]
-      @user = User.find(session[:user_id])
+      @user = current_user
       @rows = @user.trips.each_slice(4).to_a
       @i = 1
       erb :"users/edit"
@@ -14,8 +15,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/:id" do
-    if logged_in? && User.find_by(id: params[:id])
-      @user = User.find(params[:id])
+    if logged_in? && set_user
       @park = Park.all[rand(61)]
       @rows = @user.trips.each_slice(4).to_a
       @i = 1
@@ -26,20 +26,37 @@ class UsersController < ApplicationController
   end
 
   patch "/users/:id" do
-    @user = User.find(session[:user_id])
-    @user.update(params[:user])
-    redirect "/users/#{@user.id}"
+    set_user
+    if auth_user?
+      @user.update(params[:user])
+      redirect "/users/#{@user.id}"
+    else
+      erb :misadventure
+    end
   end
 
   delete "/users/:id" do
-    @user = User.find(params[:id])
-    if current_user.id == @user.id
+    set_user
+    if auth_user?
       @user.destroy
       redirect "/login"
     else
       status 403
     end
   end
+
+  private
+
+    def set_user
+      @user = User.find_by(id: params[:id])
+    end
+
+    def auth_user?
+      current_user.id == @user.id
+    end
+
+
+
 
 
 end

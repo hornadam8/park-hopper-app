@@ -9,11 +9,11 @@
 
   <br>
   <ul class="horizontal gray">
-    <a class="btn" href="/users/<%=@user.id%>" style="float:left">View profile</a>
+    <a class="btn" href="/users/<%=current_user.id%>" style="float:left">View profile</a>
     <a class="btn" href="/logout" style="float:right">Logout</a>
   </ul>
   <br>
-  <center><h2>Welcome back <%=@user.name.split(" ").first%>!</h2></center>
+  <center><h2>Welcome back <%=current_user.name.split(" ").first%>!</h2></center>
     <br>
 
   <form action="/parks/search" method="POST" style="float:right">

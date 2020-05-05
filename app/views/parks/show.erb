@@ -91,7 +91,6 @@
       <h2>Add A Trip</h2>
       <form action="/trips/new" method="POST">
         <input type="hidden" id="park_id" name="park_id" value="<%=@park.id%>">
-        <input type="hidden" id="user_id" name="user_id" value="<%=session[:user_id]%>">
         <p>Trip Date:<br>
         <input type="date" id="visit_date" name="visit_date"
                 value="<%=Time.now.to_s.split(" ").first%>"

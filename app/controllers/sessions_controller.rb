@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect "/parks"
     else
+      @error = @user.errors.full_messages.join
       erb :misadventure
     end
   end

@@ -12,6 +12,9 @@
      width="300px";>
 </center>
 <br>
+<%if @error%>
+  <center><h4><%=@error%></h4></center>
+<%end%>
 <br>
 <%if !logged_in?%>
   <center><h4>You aren't currently logged in. Log In or Signup here:</h4>

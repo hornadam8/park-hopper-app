@@ -2,8 +2,7 @@ class ParksController < ApplicationController
 
   get "/parks" do
     if logged_in?
-      @user = current_user
-      @parks = Park.search(params[:search])
+      set_parks
       @rows = @parks.each_slice(4).to_a
       @i = 1
       erb :"parks/index"
@@ -24,12 +23,22 @@ class ParksController < ApplicationController
   end
 
   post "/parks/search" do
-    if Park.search(params[:search])
-      @park = Park.search(params[:search])
-      redirect "/parks/#{@park.id}"
+    if valid_search?
+      set_parks
+      redirect "/parks/#{@parks.id}"
     else
       erb :misadventure
     end
   end
+
+  private
+
+    def valid_search?
+      Park.search(params[:search])
+    end
+
+    def set_parks
+      @parks = Park.search(params[:search])
+    end
 
 end
